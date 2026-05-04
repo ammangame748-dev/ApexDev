@@ -47,18 +47,18 @@ if(orderForm) {
         btn.innerText = "جاري إرسال طلبك الفخم...";
         btn.disabled = true;
 
-        database.ref('orders').push({
-            name: name,
-            discord: discord,
-            service: service,
-            details: details,
-            date: new Date().toLocaleString('ar-EG')
-        }).then(() => {
+       database.ref('orders').push({
+    date: new Date().toLocaleString(),
+    name: document.getElementById('clientName').value,
+    discordID: document.getElementById('discordID').value, // 👈 مهم جداً
+    service: document.getElementById('serviceType').value,
+    details: document.getElementById('details').value
+});then(() => {
             alert('تم بنجاح! سيتم تحويلك الآن لتكملة الطلب عبر الديسكورد.');
             window.location.href = "https://discord.gg/zAN7Vd7d";
         }).catch((error) => {
             alert('حدث خطأ: ' + error.message);
-            btn.innerText = "إرسال الطلب للنظام 🚀";
+            btn.innerText = "إرسال الطلب للنظام ";
             btn.disabled = false;
         });
     });
