@@ -1,7 +1,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyDmVHTi4xD8ScPYqm5PQ_o4Gmti9dWiIsQ",
-  authDomain: "://firebaseapp.com",
-  databaseURL: "https://firebaseio.com",
+  authDomain: "apexdev-abdd9.firebaseapp.com",
+  databaseURL: "https://apexdev-abdd9-default-rtdb.firebaseio.com",
   projectId: "apexdev-abdd9",
   storageBucket: "apexdev-abdd9.firebasestorage.app",
   messagingSenderId: "46524918249",
