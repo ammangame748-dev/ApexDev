@@ -1,0 +1,80 @@
+:root {
+    --main-color: #ff4d00;
+    --dark-bg: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+}
+
+span { color: var(--main-color); text-shadow: 0 0 10px var(--main-color); }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10%;
+    background: rgba(0,0,0,0.8);
+    border-bottom: 2px solid var(--main-color);
+}
+
+.logo { font-size: 2rem; font-weight: 900; }
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle, #2b0b00 0%, #0a0a0a 100%);
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    border-color: var(--main-color);
+    box-shadow: 0 0 20px var(--main-color);
+    transform: translateY(-10px);
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 50px;
+}
+
+input, textarea, select {
+    background: #222;
+    border: 1px solid #444;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+}
+
+button {
+    background: var(--main-color);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--main-color);
+}

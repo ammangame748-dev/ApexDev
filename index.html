@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexDev | لبرمجة المواقع وبوتات الديسكورد</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Apex<span>Dev</span></div>
+            <ul>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#order">اطلب الآن</a></li>
+                <li><a href="https://discord.com/channels/@me/1484020007817056348" class="discord-btn">تواصل ديسكورد</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>إبداع بلا حدود في عالم <span>البرمجة</span></h1>
+        <p>نحول أفكارك إلى واقع رقمي (مواقع، بوتات ديسكورد، وأنظمة متكاملة)</p>
+    </section>
+
+    <section id="services" class="services">
+        <div class="card">
+            <h3>برمجة المواقع</h3>
+            <p>تصاميم عصرية وسرعة فائقة.</p>
+        </div>
+        <div class="card">
+            <h3>بوتات ديسكورد</h3>
+            <p>بوتات متطورة لإدارة سيرفرك باحترافية.</p>
+        </div>
+    </section>
+
+    <section id="order" class="order-section">
+        <h2>أرسل طلبك الآن</h2>
+        <form id="orderForm">
+            <input type="text" id="clientName" placeholder="اسمك الكريم" required>
+            <select id="serviceType">
+                <option value="website">برمجة موقع</option>
+                <option value="bot">بوت ديسكورد</option>
+            </select>
+            <textarea id="details" placeholder="تفاصيل الطلب..." required></textarea>
+            <button type="submit">إرسال الطلب للنظام</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
