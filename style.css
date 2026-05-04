@@ -1,58 +1,85 @@
 :root {
     --main-color: #ff4d00;
     --dark-bg: #0a0a0a;
-    --card-bg: #1a1a1a;
+    --card-bg: rgba(26, 26, 26, 0.8);
     --text-color: #ffffff;
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    background-color: var(--dark-bg);
+    background: linear-gradient(-45deg, #0a0a0a, #1a0800, #0a0a0a, #2b0b00);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-color);
     font-family: 'Cairo', sans-serif;
-    margin: 0;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
-span { color: var(--main-color); text-shadow: 0 0 10px var(--main-color); }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
+span { color: var(--main-color); text-shadow: 0 0 15px var(--main-color); }
+
+/* شاشة البداية */
+#intro {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: #000; display: flex; justify-content: center; align-items: center;
+    z-index: 9999; transition: opacity 0.8s ease;
+}
+.intro-logo { font-size: 4rem; font-weight: 900; animation: slideUpFade 1.8s forwards; opacity: 0; }
+@keyframes slideUpFade {
+    0% { transform: translateY(50px); opacity: 0; }
+    50% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-30px); opacity: 0; }
+}
+
+/* Nav */
 nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 10%; background: rgba(0,0,0,0.9);
-    border-bottom: 2px solid var(--main-color);
+    padding: 20px 8%; background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 77, 0, 0.3);
     position: sticky; top: 0; z-index: 1000;
 }
+.logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; }
+ul { display: flex; list-style: none; gap: 25px; }
+ul li a { color: white; text-decoration: none; font-weight: 700; transition: 0.3s; }
+ul li a:hover { color: var(--main-color); }
+.discord-btn { background: #5865F2; padding: 10px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4); }
 
-.logo { font-size: 2rem; font-weight: 900; }
-ul { display: flex; list-style: none; gap: 20px; }
-ul li a { color: white; text-decoration: none; font-weight: bold; }
-.discord-btn { background: #5865F2; padding: 8px 15px; border-radius: 5px; }
+/* Hero */
+.hero { text-align: center; padding: 150px 20px; }
+.hero h1 { font-size: 4rem; margin-bottom: 20px; line-height: 1.2; }
+.hero p { font-size: 1.3rem; color: #ccc; max-width: 700px; margin: 0 auto 30px; }
+.main-btn { background: var(--main-color); color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; font-size: 1.2rem; box-shadow: 0 0 20px var(--main-color); display: inline-block; transition: 0.3s; }
+.main-btn:hover { transform: scale(1.1); filter: brightness(1.2); }
 
-.hero {
-    text-align: center; padding: 150px 20px;
-    background: radial-gradient(circle, #2b0b00 0%, #0a0a0a 100%);
-}
-.hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-
-.services { display: flex; justify-content: center; gap: 20px; padding: 50px 10%; flex-wrap: wrap; }
+/* Services Cards */
+.services { display: flex; justify-content: center; gap: 30px; padding: 100px 10%; flex-wrap: wrap; }
 .card {
-    background: var(--card-bg); padding: 40px; border-radius: 15px;
-    border: 1px solid #333; transition: 0.3s; text-align: center; width: 300px;
+    background: var(--card-bg); padding: 50px 30px; border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; text-align: center; width: 320px;
+    backdrop-filter: blur(5px);
 }
-.card:hover { border-color: var(--main-color); box-shadow: 0 0 30px var(--main-color); transform: translateY(-10px); }
+.card .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+.card h3 { margin-bottom: 15px; font-size: 1.6rem; }
+.card:hover { border-color: var(--main-color); box-shadow: 0 0 40px rgba(255, 77, 0, 0.2); transform: translateY(-15px); }
 
-.order-section { padding: 80px 10%; text-align: center; background: #0f0f0f; }
-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-input, textarea, select { background: #1a1a1a; border: 1px solid #444; padding: 15px; color: white; border-radius: 8px; font-family: 'Cairo'; }
-button {
-    background: var(--main-color); color: white; border: none; padding: 18px;
-    font-weight: bold; cursor: pointer; border-radius: 8px; font-size: 1.1rem;
-    box-shadow: 0 0 15px var(--main-color); transition: 0.3s;
+/* Form */
+.order-section { padding: 100px 10%; background: rgba(0,0,0,0.5); }
+.form-container { max-width: 700px; margin: 0 auto; background: #111; padding: 40px; border-radius: 20px; border: 1px solid #222; }
+form { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+input, textarea, select { background: #1a1a1a; border: 1px solid #333; padding: 18px; color: white; border-radius: 10px; font-family: 'Cairo'; outline: none; transition: 0.3s; }
+input:focus, textarea:focus { border-color: var(--main-color); background: #222; }
+#submitBtn {
+    background: var(--main-color); color: white; border: none; padding: 20px;
+    font-weight: 900; cursor: pointer; border-radius: 10px; font-size: 1.2rem;
+    box-shadow: 0 10px 20px rgba(255, 77, 0, 0.3); transition: 0.3s;
 }
-button:hover { transform: scale(1.05); filter: brightness(1.2); }
+#submitBtn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 77, 0, 0.5); }
 
-/* تنسيقات صفحة الأدمن */
-.admin-container { padding: 50px 5%; text-align: center; }
-table { width: 100%; border-collapse: collapse; margin-top: 30px; background: #111; border-radius: 10px; overflow: hidden; }
-th, td { padding: 15px; border-bottom: 1px solid #222; text-align: center; }
-th { background: var(--main-color); color: black; }
-.delete-btn { background: #ff0000; color: white; border: none; padding: 5px 15px; cursor: pointer; border-radius: 5px; }
+footer { padding: 40px; text-align: center; border-top: 1px solid #222; margin-top: 50px; color: #777; }

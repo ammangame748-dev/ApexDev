@@ -4,53 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ApexDev | لبرمجة المواقع وبوتات الديسكورد</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- الروابط الخارجية: خط كايرو + أنيميشن AOS -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Firebase SDKs -->
+    <link href="https://unpkg.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase SDKs (الإصدار المستقر) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
+
+    <!-- 1. شاشة البداية (Intro Animation) -->
+    <div id="intro">
+        <h1 class="intro-logo" id="introText">Apex<span>Dev</span></h1>
+    </div>
+
+    <!-- 2. الهيدر (الناف بار) -->
     <header>
         <nav>
             <div class="logo">Apex<span>Dev</span></div>
             <ul>
                 <li><a href="#services">خدماتنا</a></li>
                 <li><a href="#order">اطلب الآن</a></li>
-                <li><a href="https://discord.com" class="discord-btn">تواصل ديسكورد</a></li>
+                <li><a href="https://discord.gg" class="discord-btn">تواصل ديسكورد</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>إبداع بلا حدود في عالم <span>البرمجة</span></h1>
-        <p>نحول أفكارك إلى واقع رقمي (مواقع، بوتات ديسكورد، وأنظمة متكاملة)</p>
+    <!-- 3. القسم الرئيسي (Hero Section) -->
+    <section class="hero" data-aos="zoom-in">
+        <div class="hero-content">
+            <h1>إبداع بلا حدود في عالم <span>البرمجة</span></h1>
+            <p>نحول أفكارك إلى واقع رقمي (مواقع، بوتات ديسكورد، وأنظمة متكاملة)</p>
+            <a href="#order" class="main-btn">ابدأ مشروعك الآن</a>
+        </div>
     </section>
 
+    <!-- 4. قسم الخدمات -->
     <section id="services" class="services">
-        <div class="card">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon">🌐</div>
             <h3>برمجة المواقع</h3>
-            <p>تصاميم عصرية وسرعة فائقة بأحدث التقنيات.</p>
+            <p>تصاميم عصرية وسرعة فائقة بأحدث التقنيات لضمان أفضل تجربة مستخدم.</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon">🤖</div>
             <h3>بوتات ديسكورد</h3>
-            <p>بوتات متطورة لإدارة سيرفرك وحمايته باحترافية.</p>
+            <p>بوتات متطورة لإدارة سيرفرك، حمايته، وأنظمة تفاعلية حصرية.</p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon">⚙️</div>
+            <h3>أنظمة خاصة</h3>
+            <p>برمجة سكربتات وأنظمة برمجية مخصصة حسب احتياج عملك.</p>
         </div>
     </section>
 
-    <section id="order" class="order-section">
-        <h2>أرسل طلبك الآن 🔥</h2>
-        <form id="orderForm">
-            <input type="text" id="clientName" placeholder="اسمك الكريم" required>
-            <select id="serviceType">
-                <option value="website">برمجة موقع</option>
-                <option value="bot">بوت ديسكورد</option>
-            </select>
-            <textarea id="details" placeholder="اكتب تفاصيل طلبك هنا..." required></textarea>
-            <button type="submit" id="submitBtn">إرسال الطلب للنظام</button>
-        </form>
+    <!-- 5. قسم الطلب (Form) -->
+    <section id="order" class="order-section" data-aos="fade-up">
+        <div class="form-container">
+            <h2>أرسل طلبك الآن 🔥</h2>
+            <p>سنتواصل معك فور استلام الطلب لتنفيذه</p>
+            <form id="orderForm">
+                <input type="text" id="clientName" placeholder="اسمك الكريم" required>
+                <input type="text" id="discordID" placeholder="يوزرك أو الآيدي في ديسكورد" required>
+                <select id="serviceType">
+                    <option value="website">برمجة موقع</option>
+                    <option value="bot">بوت ديسكورد</option>
+                    <option value="system">نظام خاص</option>
+                </select>
+                <textarea id="details" placeholder="اكتب تفاصيل طلبك هنا (المميزات المطلوبة...)" required></textarea>
+                <button type="submit" id="submitBtn">إرسال الطلب للنظام 🚀</button>
+            </form>
+        </div>
     </section>
 
+    <footer>
+        <p>جميع الحقوق محفوظة لـ <span>ApexDev</span> &copy; 2024</p>
+    </footer>
+
+    <!-- ملفات التفعيل (JS) -->
+    <script src="https://unpkg.com"></script>
     <script src="index.js"></script>
+    <script>
+        // تفعيل أنيميشن الظهور
+        AOS.init({ duration: 1000, once: true });
+
+        // إخفاء شاشة البداية بعد التحميل
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const intro = document.getElementById('intro');
+                intro.style.opacity = '0';
+                setTimeout(() => { intro.style.display = 'none'; }, 800);
+            }, 2000); 
+        });
+    </script>
 </body>
 </html>
