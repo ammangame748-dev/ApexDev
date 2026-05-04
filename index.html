@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ApexDev | لبرمجة المواقع وبوتات الديسكورد</title>
-    
+
     <!-- الروابط الخارجية: خط كايرو + أنيميشن AOS -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link href="https://unpkg.com" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <!-- Firebase SDKs (الإصدار المستقر) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
+
 <body>
 
     <!-- 1. شاشة البداية (Intro Animation) -->
@@ -85,7 +87,7 @@
     </footer>
 
     <!-- ملفات التفعيل (JS) -->
-    <script src="https://unpkg.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="index.js"></script>
     <script>
         // تفعيل أنيميشن الظهور
@@ -97,8 +99,9 @@
                 const intro = document.getElementById('intro');
                 intro.style.opacity = '0';
                 setTimeout(() => { intro.style.display = 'none'; }, 800);
-            }, 2000); 
+            }, 2000);
         });
     </script>
 </body>
+
 </html>
