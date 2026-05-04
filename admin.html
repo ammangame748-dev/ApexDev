@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>لوحة تحكم ApexDev</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://googleapis.com" rel="stylesheet">
-    <script src="https://gstatic.com"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://gstatic.com"></script>
 </head>
 <body>
@@ -29,12 +29,13 @@
 
     <script>
         // نضع نفس الكونفيج هنا أيضاً
-        const firebaseConfig = {
-            apiKey: "AIzaSyDmVHTi4xD8ScPYqm5PQ_o4Gmti9dWiIsQ",
-            authDomain: "://firebaseapp.com",
-            projectId: "apexdev-abdd9",
-            databaseURL: "https://firebaseio.com"
-        };
+const firebaseConfig = {
+    apiKey: "AIzaSyDmVHTi4xD8ScPYqm5PQ_o4Gmti9dWiIsQ",
+    authDomain: "://firebaseapp.com",
+    projectId: "apexdev-abdd9",
+    databaseURL: "https://firebaseio.com"
+};
+
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
