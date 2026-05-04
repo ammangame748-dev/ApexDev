@@ -39,7 +39,7 @@
 
         .admin-container {
             width: 90%;
-            max-width: 1000px;
+            max-width: 1100px;
             text-align: center;
             animation: fadeIn 1s ease;
         }
@@ -119,7 +119,7 @@
 <body>
 
     <div class="admin-container">
-        <h1>🔥 لوحة التحكم - الطلبات الواردة 🔥</h1>
+        <h1> لوحة التحكم - الطلبات الواردة </h1>
         <a href="index.html">← العودة للموقع</a>
 
         <table>
@@ -127,6 +127,7 @@
                 <tr>
                     <th>التاريخ</th>
                     <th>العميل</th>
+                    <th>ايدي ديسكورد</th>
                     <th>الخدمة</th>
                     <th>التفاصيل</th>
                     <th>إجراء</th>
@@ -161,6 +162,7 @@
                     <tr>
                         <td>${order.date}</td>
                         <td>${order.name}</td>
+                        <td>${order.discordID || 'N/A'}</td>
                         <td>${order.service}</td>
                         <td>${order.details}</td>
                         <td><button onclick="deleteOrder('${id}')">حذف</button></td>
