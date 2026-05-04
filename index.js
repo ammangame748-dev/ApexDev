@@ -29,7 +29,7 @@ if (document.getElementById('orderForm')) {
             alert('تم إرسال طلبك! انتظر المسؤول.\n\nتواصل هنا لتكملة طلبك: https://discord.com/channels/@me/1484020007817056348');
 
             // تحويل المستخدم تلقائياً لرابط الديسكورد (اختياري)
-            window.location.href = "https://discord.com/channels/@me/1485560623243722913";
+            window.location.href = "https://discord.com/channels/@me/1465745388920246345";
 
             document.getElementById('orderForm').reset();
             btn.innerText = "إرسال الطلب للنظام";
