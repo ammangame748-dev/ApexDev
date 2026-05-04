@@ -6,16 +6,18 @@
     <title>ApexDev | لبرمجة المواقع وبوتات الديسكورد</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Firebase SDKs -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">Apex<span>Dev</span></div>
             <ul>
                 <li><a href="#services">خدماتنا</a></li>
                 <li><a href="#order">اطلب الآن</a></li>
-                <li><a href="https://discord.com/channels/@me/1484020007817056348" class="discord-btn">تواصل ديسكورد</a></li>
+                <li><a href="https://discord.com" class="discord-btn">تواصل ديسكورد</a></li>
             </ul>
         </nav>
     </header>
@@ -28,27 +30,27 @@
     <section id="services" class="services">
         <div class="card">
             <h3>برمجة المواقع</h3>
-            <p>تصاميم عصرية وسرعة فائقة.</p>
+            <p>تصاميم عصرية وسرعة فائقة بأحدث التقنيات.</p>
         </div>
         <div class="card">
             <h3>بوتات ديسكورد</h3>
-            <p>بوتات متطورة لإدارة سيرفرك باحترافية.</p>
+            <p>بوتات متطورة لإدارة سيرفرك وحمايته باحترافية.</p>
         </div>
     </section>
 
     <section id="order" class="order-section">
-        <h2>أرسل طلبك الآن</h2>
+        <h2>أرسل طلبك الآن 🔥</h2>
         <form id="orderForm">
             <input type="text" id="clientName" placeholder="اسمك الكريم" required>
             <select id="serviceType">
                 <option value="website">برمجة موقع</option>
                 <option value="bot">بوت ديسكورد</option>
             </select>
-            <textarea id="details" placeholder="تفاصيل الطلب..." required></textarea>
-            <button type="submit">إرسال الطلب للنظام</button>
+            <textarea id="details" placeholder="اكتب تفاصيل طلبك هنا..." required></textarea>
+            <button type="submit" id="submitBtn">إرسال الطلب للنظام</button>
         </form>
     </section>
 
-    <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
