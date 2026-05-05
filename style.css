@@ -297,3 +297,12 @@ footer {
     margin-top: 50px;
     color: #777;
 }
+.project-item img {
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.project-item img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--main-color);
+}

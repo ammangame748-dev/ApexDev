@@ -49,6 +49,21 @@ function calculatePrice(service, details) {
     return price;
 }
 
+window.openPortfolio = function() {
+    const portfolioSection = document.getElementById('portfolioModal');
+    if (portfolioSection) {
+        portfolioSection.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+window.closePortfolio = function() {
+    const portfolioSection = document.getElementById('portfolioModal');
+    if (portfolioSection) {
+        portfolioSection.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
 
 // 4. معالجة الإرسال والدفع
 const orderForm = document.getElementById('orderForm');
