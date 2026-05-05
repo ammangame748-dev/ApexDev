@@ -124,8 +124,8 @@ function updatePriceInfo() {
     if (selected === "website") {
         priceInfo.innerHTML = `
             <strong> تسعير المواقع:</strong><br>
-            • المواقع المتكاملة وعالية المواصفات: تبدأ من <b>30$</b><br>
-            • المواقع البسيطة أو التعريفية: تبدأ من <b>7$</b>
+            • المواقع المتكاملة وعالية المواصفات: تنتهي كحد اقصى من <b>30$</b><br>
+            • المواقع البسيطة أو التعريفية: تبدأ من <b>4$</b>
         `;
     } else if (selected === "bot") {
         priceInfo.innerHTML = `
