@@ -65,28 +65,34 @@
         </div>
     </section>
 
-    <!-- 5. قسم الطلب (Form) -->
-    <section id="order" class="order-section" data-aos="fade-up">
-        <div class="form-container">
-            <span class="close-btn" onclick="closeOrder()">&times;</span>
+ <!-- 5. قسم الطلب (Form) -->
+<section id="order" class="order-section" data-aos="fade-up">
+    <div class="form-container">
+        <span class="close-btn" onclick="closeOrder()">&times;</span>
 
-            <h2>أرسل طلبك الآن </h2>
-            <p>سنتواصل معك فور استلام الطلب لتنفيذه</p>
-            <form id="orderForm">
-                <input type="text" id="clientName" placeholder="اسمك الشخصي" required>
-                <input type="text" id="discordID" placeholder="يوزرك أو الآيدي في ديسكورد" required>
-                <select id="serviceType">
-                    <option value="website">برمجة موقع</option>
-                    <option value="bot">بوت ديسكورد</option>
+        <h2>أرسل طلبك الآن</h2>
+        <p>سنتواصل معك فور استلام الطلب لتنفيذه</p>
+        
+        <form id="orderForm">
+            <input type="text" id="clientName" placeholder="اسمك الشخصي" required>
+            <input type="text" id="discordID" placeholder="يوزرك أو الآيدي في ديسكورد" required>
+            
+            <select id="serviceType">
+                <option value="website">برمجة المواقع الإلكترونية</option>
+                <option value="bot">برمجة بوتات الديسكورد</option>
+            </select>
 
-                </select>
-                <div id="priceInfo" style="margin-top: 10px; padding: 10px; border-radius: 8px; background: rgba(255, 77, 0, 0.1); border: 1px solid rgba(255, 77, 0, 0.2); font-size: 0.9rem; line-height: 1.6; color: #eee;">
+            <!-- صندوق معلومات السعر (تم تصحيح الإغلاق وإضافة التنسيق) -->
+            <div id="priceInfo" style="margin: 15px 0; padding: 12px; border-radius: 8px; background: rgba(255, 77, 0, 0.1); border: 1px dashed var(--main-color); font-size: 0.9rem; line-height: 1.6; color: #eee; text-align: right;">
+                <!-- سيتم تعبئته تلقائياً بواسطة JavaScript -->
+            </div>
 
-                <textarea id="details" placeholder="اكتب تفاصيل طلبك هنا " required></textarea>
-                <button type="submit" id="submitBtn">إرسال الطلب </button>
-            </form>
-        </div>
-    </section>
+            <textarea id="details" placeholder="اكتب تفاصيل طلبك هنا (المواصفات المطلوبة)..." required></textarea>
+            
+            <button type="submit" id="submitBtn">إرسال الطلب وبدء التنفيذ</button>
+        </form>
+    </div>
+</section>
 
     <footer>
         <p>جميع الحقوق محفوظة لـ <span>ApexDev</span> &copy; </p>
