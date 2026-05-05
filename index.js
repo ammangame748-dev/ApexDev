@@ -16,7 +16,7 @@ const database = firebase.database();
 
 
 // 2. دوال النافذة
-window.openOrder = function() {
+window.openOrder = function () {
     const orderSection = document.getElementById('order');
     if (orderSection) {
         orderSection.style.display = 'flex';
@@ -24,7 +24,7 @@ window.openOrder = function() {
     }
 }
 
-window.closeOrder = function() {
+window.closeOrder = function () {
     const orderSection = document.getElementById('order');
     if (orderSection) {
         orderSection.style.display = 'none';
@@ -49,7 +49,7 @@ function calculatePrice(service, details) {
     return price;
 }
 
-window.openPortfolio = function() {
+window.openPortfolio = function () {
     const portfolioSection = document.getElementById('portfolioModal');
     if (portfolioSection) {
         portfolioSection.style.display = 'flex';
@@ -57,7 +57,7 @@ window.openPortfolio = function() {
     }
 }
 
-window.closePortfolio = function() {
+window.closePortfolio = function () {
     const portfolioSection = document.getElementById('portfolioModal');
     if (portfolioSection) {
         portfolioSection.style.display = 'none';
@@ -68,7 +68,7 @@ window.closePortfolio = function() {
 // 4. معالجة الإرسال والدفع
 const orderForm = document.getElementById('orderForm');
 if (orderForm) {
-    orderForm.addEventListener('submit', function(e) {
+    orderForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const btn = document.getElementById('submitBtn');
@@ -114,3 +114,28 @@ if (orderForm) {
         });
     });
 }
+const serviceSelect = document.getElementById('serviceType');
+const priceInfo = document.getElementById('priceInfo');
+
+// دالة لتحديث معلومات السعر
+function updatePriceInfo() {
+    const selected = serviceSelect.value;
+
+    if (selected === "website") {
+        priceInfo.innerHTML = `
+            <strong> تسعير المواقع:</strong><br>
+            • المواقع المتكاملة وعالية المواصفات: تبدأ من <b>30$</b><br>
+            • المواقع البسيطة أو التعريفية: تبدأ من <b>7$</b>
+        `;
+    } else if (selected === "bot") {
+        priceInfo.innerHTML = `
+            <strong> تسعير البوتات:</strong><br>
+            • بوتات متكاملة (أنظمة إدارة وحماية متطورة): <b>7$</b><br>
+            • بوتات الخدمة العادية أو البسيطة: <b>4$</b>
+        `;
+    }
+}
+
+// تشغيل الدالة عند تحميل الصفحة وعند التغيير
+serviceSelect.addEventListener('change', updatePriceInfo);
+updatePriceInfo();
