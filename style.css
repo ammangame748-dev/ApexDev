@@ -227,7 +227,7 @@ ul li a:hover {
     border: 1px solid var(--main-color);
     position: relative;
     /* عشان زر الإغلاق */
-    box-shadow: 0 0 50px rgba(255, 77, 0, 0.2);
+    box-shadow: 0 0 50px rgba(4, 20, 199, 0.2);
 }
 
 /* زر إغلاق (X) */
@@ -281,13 +281,13 @@ textarea:focus {
     cursor: pointer;
     border-radius: 10px;
     font-size: 1.1rem;
-    box-shadow: 0 10px 20px rgba(255, 77, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(15, 12, 224, 0.3);
     transition: 0.3s;
 }
 
 #submitBtn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(255, 77, 0, 0.5);
+    box-shadow: 0 15px 30px rgba(22, 2, 198, 0.5);
 }
 
 footer {
