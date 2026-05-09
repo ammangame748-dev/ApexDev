@@ -1,4 +1,4 @@
-// 1. إعدادات Firebase (استخدمت الروابط التي كانت في كودك السابق لضمان عملها)
+// 1. إعدادات Firebase 
 const firebaseConfig = {
     apiKey: "AIzaSyDmVHTi4xD8ScPYqm5PQ_o4Gmti9dWiIsQ",
     authDomain: "apexdev-abdd9.firebaseapp.com",
@@ -9,31 +9,27 @@ const firebaseConfig = {
     appId: "1:46524918249:web:b3fd61fcddec3b41b20378"
 };
 
+// التأكد من تهيئة التطبيق مرة واحدة فقط
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const database = firebase.database();
 
-
-// 2. دوال النافذة
-window.openOrder = function () {
-    const orderSection = document.getElementById('order');
-    if (orderSection) {
-        orderSection.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+// 2. التحكم في النوافذ (Modals)
+function toggleModal(id, show) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = show ? 'flex' : 'none';
+        document.body.style.overflow = show ? 'hidden' : 'auto';
     }
 }
 
-window.closeOrder = function () {
-    const orderSection = document.getElementById('order');
-    if (orderSection) {
-        orderSection.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
+window.openOrder = () => toggleModal('order', true);
+window.closeOrder = () => toggleModal('order', false);
+window.openPortfolio = () => toggleModal('portfolioModal', true);
+window.closePortfolio = () => toggleModal('portfolioModal', false);
 
-
-// 3. دالة حساب السعر
+// 3. دالة حساب السعر الذكية
 function calculatePrice(service, details) {
     let price = 0;
     let desc = details.toLowerCase();
@@ -42,100 +38,66 @@ function calculatePrice(service, details) {
         if (desc.includes("متجر") || desc.length > 100) price = 30;
         else if (desc.length < 30) price = 7;
         else price = 15;
-    } else if (service === "bot") {
+    } else {
         if (desc.includes("كامل") || desc.length > 50) price = 7;
         else price = 4;
     }
     return price;
 }
 
-window.openPortfolio = function () {
-    const portfolioSection = document.getElementById('portfolioModal');
-    if (portfolioSection) {
-        portfolioSection.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-window.closePortfolio = function () {
-    const portfolioSection = document.getElementById('portfolioModal');
-    if (portfolioSection) {
-        portfolioSection.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// 4. معالجة الإرسال والدفع
+// 4. معالجة الإرسال
 const orderForm = document.getElementById('orderForm');
 if (orderForm) {
     orderForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const btn = document.getElementById('submitBtn');
-        const name = document.getElementById('clientName').value;
-        const discord = document.getElementById('discordID').value;
-        const service = document.getElementById('serviceType').value;
-        const details = document.getElementById('details').value;
+        const data = {
+            name: document.getElementById('clientName').value,
+            discord: document.getElementById('discordID').value,
+            service: document.getElementById('serviceType').value,
+            details: document.getElementById('details').value
+        };
 
-        const finalPrice = calculatePrice(service, details);
-
-        // رابط PayPal الصحيح
+        const finalPrice = calculatePrice(data.service, data.details);
         const paypalLink = `https://paypal.me/AHM2009/${finalPrice}`;
 
-        btn.innerText = "جاري حفظ طلبك...";
+        btn.innerText = "جاري الحفظ...";
         btn.disabled = true;
 
         database.ref('orders').push({
-            date: new Date().toLocaleString(),
-            name: name,
-            discordID: discord,
-            service: service,
-            details: details,
+            date: new Date().toLocaleString('ar-EG'),
+            ...data,
             price: finalPrice + "$"
         }).then(() => {
-
-            alert(` تم استلام طلبك بنجاح!
-
- السعر المطلوب: ${finalPrice}$
- سيتم تحويلك لصفحة الدفع ثم للديسكورد`);
-
-            // فتح الدفع
+            alert(`تم استلام طلبك!\nالسعر: ${finalPrice}$\nسيتم توجيهك الآن.`);
+            
+            // فتح صفحة الدفع
             window.open(paypalLink, "_blank");
 
-            // تحويل للديسكورد مباشرة بعده
+            // تحويل للديسكورد بعد 3 ثواني
             setTimeout(() => {
                 window.location.href = "https://discord.gg/yRPubu3c";
-            }, 4000);
-
-        }).catch((error) => {
-            alert('حدث خطأ: ' + error.message);
-            btn.innerText = "إرسال الطلب";
+            }, 3000);
+        }).catch((err) => {
+            alert('خطأ في الإرسال: ' + err.message);
             btn.disabled = false;
+            btn.innerText = "إرسال الطلب";
         });
     });
 }
+
+// 5. تحديث معلومات السعر تلقائياً
 const serviceSelect = document.getElementById('serviceType');
 const priceInfo = document.getElementById('priceInfo');
 
-// دالة لتحديث معلومات السعر
-function updatePriceInfo() {
-    const selected = serviceSelect.value;
-
-    if (selected === "website") {
-        priceInfo.innerHTML = `
-            <strong> تسعير المواقع:</strong><br>
-            • المواقع المتكاملة وعالية المواصفات: تنتهي كحد اقصى من <b>30$</b><br>
-            • المواقع البسيطة أو التعريفية: تبدأ من <b>4$</b>
-        `;
-    } else if (selected === "bot") {
-        priceInfo.innerHTML = `
-            <strong> تسعير البوتات:</strong><br>
-            • بوتات متكاملة (أنظمة إدارة وحماية متطورة): <b>7$</b><br>
-            • بوتات الخدمة العادية أو البسيطة: <b>4$</b>
-        `;
-    }
+if (serviceSelect && priceInfo) {
+    const updateInfo = () => {
+        const isWeb = serviceSelect.value === "website";
+        priceInfo.innerHTML = isWeb ? 
+            `<strong>تسعير المواقع:</strong><br>• متكاملة: حتى <b>30$</b><br>• بسيطة: تبدأ من <b>4$</b>` :
+            `<strong>تسعير البوتات:</strong><br>• متطورة: <b>7$</b><br>• بسيطة: <b>4$</b>`;
+    };
+    serviceSelect.onchange = updateInfo;
+    updateInfo();
 }
-
-// تشغيل الدالة عند تحميل الصفحة وعند التغيير
-serviceSelect.addEventListener('change', updatePriceInfo);
-updatePriceInfo();
